@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   # get   "tasks/:id/edit",   to: "tasks#edit",   as: :edit_task
   # patch "tasks/:id",        to: "tasks#update"
   # get   "tasks",            to: "tasks#index"
-  # get   "tasks/:id",        to: "tasks#show", as: :task 
+  # get   "tasks/:id",        to: "tasks#show", as: :task
   # delete "tasks/:id",       to: "tasks#destroy"
 
-
-  resources :tasks 
+  root to: "tasks#index";
+  resources :tasks
 
 
 end
