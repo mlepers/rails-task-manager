@@ -31,9 +31,16 @@ class TasksController < ApplicationController
     end
 
     def update
+        raise
+        if (params[:check_done])
+            @task.completed = !@task.completed
+            @task.save
+            redirect_to tasks_path
+        else
         # @task = Task.find(params[:id])
         @task.update(task_params)
         redirect_to task_path(@task)
+        end
     end
 
     def destroy

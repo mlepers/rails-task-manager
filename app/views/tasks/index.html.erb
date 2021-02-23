@@ -5,19 +5,25 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li>
-      <h3>
-        <%if task.completed?%>
-        <input type="checkbox" id="scales" name="scales" checked>
-         <%else%> 
-         <input type="checkbox" id="scales" name="scales">
-        <%end%> 
+    <li class="d-flex">
+      
+
+
+       <%= link_to task_path(task.id, check_done: true), method: :patch do %>
+        <% if task.completed %>
+          <i class="far fa-check-square mr-2"></i>
+        <% else %>
+          <i class="far fa-square mr-2"></i>
+        <% end %>
+      <% end %>
+      <h5>
         <%= link_to task.title , task_path(task.id) %>        
-      </h3>
-      <%= link_to "Delete",
-            task_path(task.id),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+      </h5>
+
+      <%= link_to task_path(task.id), method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+      <i class="fas fa-trash ml-2"></i>
+      <% end %>
+
     </li>
   <% end %>
 </ul>
