@@ -31,7 +31,6 @@ class TasksController < ApplicationController
     end
 
     def update
-        raise
         if (params[:check_done])
             @task.completed = !@task.completed
             @task.save
